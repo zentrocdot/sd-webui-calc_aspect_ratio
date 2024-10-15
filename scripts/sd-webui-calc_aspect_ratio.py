@@ -20,7 +20,7 @@ import modules.scripts as scripts
 from modules.ui_components import InputAccordion
    
 # Define class CalcAspectRatioScript.
-class AspectRatioScript(scripts.Script):
+class CalcAspectRatioScript(scripts.Script):
     '''Class for calculating the aspect ratio.'''
     
     def title(self):
@@ -38,10 +38,10 @@ class AspectRatioScript(scripts.Script):
         css_col = f'{"img" if is_img2img else "txt"}2img_sc_column_aspect_ratio'
         css_row = f'{"img" if is_img2img else "txt"}2img_sc_row_aspect_ratio'        
         # Create a column.
-        with gr.Column(elem_id=css_acc):
+        with gr.Column(elem_id=css_col):
             # Create an accordioan.
-            with InputAccordion(False, label="Aspect Ratio Calculator", 
-                elem_id=css_acc
+            with InputAccordion(
+                False, label="Aspect Ratio Calculator", elem_id=css_acc
             ) as enabled:
                 arvalue = gr.Textbox(value="N/A", lines=1, 
                     label="Calculated aspect ratio from Width/Height", interactive=False, inputs=None
