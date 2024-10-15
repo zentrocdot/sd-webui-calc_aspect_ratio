@@ -19,7 +19,7 @@ import gradio as gr
 import modules.scripts as scripts
 from modules.ui_components import InputAccordion
    
-# Define class AspectRatioScript.
+# Define class CalcAspectRatioScript.
 class AspectRatioScript(scripts.Script):
     '''Class for calculating the aspect ratio.'''
     
@@ -33,20 +33,19 @@ class AspectRatioScript(scripts.Script):
 
     def ui(self, is_img2img):
         '''Class method ui.'''
+        # Set the css format strings.
+        css_acc = f'{"img" if is_img2img else "txt"}2img_accordion_aspect_ratio'
+        css_col = f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
+        css_row = f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'        
         # Loop over the columns.
-        with gr.Column(
-            elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
-        ):
-            with InputAccordion(
-                False, label="Aspect Ratio Calculator", 
-                elem_id=f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'
+        with gr.Column(elem_id=css_acc):
+            with InputAccordion(False, label="Aspect Ratio Calculator", 
+                elem_id=css_acc
             ) as enabled:
                 arvalue = gr.Textbox(value="N/A", lines=1,
                     label="Calculated aspect ratio from Width/Height", interactive=False, inputs=None
                 )
-                with gr.Row(
-                    elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
-                ):
+                with gr.Row(elem_id=css_row):
                     mybutton = gr.Button("Acquire Width and Height")          
                     with contextlib.suppress(AttributeError):
                         if is_img2img:
