@@ -43,8 +43,8 @@ class AspectRatioScript(scripts.Script):
             with InputAccordion(False, label="Aspect Ratio Calculator", 
                 elem_id=css_acc
             ) as enabled:
-                arvalue = gr.Textbox(value="N/A", lines=1, label="",
-                    info="Calculated aspect ratio from Width/Height", interactive=False, inputs=None
+                arvalue = gr.Textbox(value="N/A", lines=1, 
+                    label="Calculated aspect ratio from Width/Height", interactive=False, inputs=None
                 )
                 # Create a row.
                 with gr.Row(elem_id=css_row):
