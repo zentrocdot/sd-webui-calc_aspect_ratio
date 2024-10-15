@@ -31,6 +31,14 @@ class CalcAspectRatioScript(scripts.Script):
         '''Class method show.'''
         return scripts.AlwaysVisible  # hide this script in the Scripts dropdown
 
+    def image_resolution(self, is_img2img):
+        '''Get the image resolution from container and return the values.'''
+        if is_img2img:
+            imgres = [self.i2i_w, self.i2i_h]
+        else:
+            imgres = [self.t2i_w, self.t2i_h]
+        return imgres  
+
     def ui(self, is_img2img):
         '''Class method ui.'''
         # Set the css format strings.
@@ -50,10 +58,7 @@ class CalcAspectRatioScript(scripts.Script):
                 with gr.Row(elem_id=css_row):
                     mybutton = gr.Button("Acquire Width and Height")          
                     with contextlib.suppress(AttributeError):
-                        if is_img2img:
-                            imgres = [self.i2i_w, self.i2i_h]
-                        else:
-                            imgres = [self.t2i_w, self.t2i_h]
+                        imgres = self.image_resolution(is_img2img)
                         def update_number(x,y):
                             if x > y:
                                 z = x/y
