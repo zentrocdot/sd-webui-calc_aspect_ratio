@@ -37,13 +37,14 @@ class AspectRatioScript(scripts.Script):
         css_acc = f'{"img" if is_img2img else "txt"}2img_accordion_aspect_ratio'
         css_col = f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         css_row = f'{"img" if is_img2img else "txt"}2img_row_aspect_ratio'        
-        # Loop over the columns.
+        # Create a column.
         with gr.Column(elem_id=css_acc):
+            # Create an accordioan.
             with InputAccordion(False, label="Aspect Ratio Calculator", 
                 elem_id=css_acc
             ) as enabled:
-                arvalue = gr.Textbox(value="N/A", lines=1,
-                    label="Calculated aspect ratio from Width/Height", interactive=False, inputs=None
+                arvalue = gr.Textbox(value="N/A", lines=1, label=""
+                    info="Calculated aspect ratio from Width/Height", interactive=False, inputs=None
                 )
                 with gr.Row(elem_id=css_row):
                     mybutton = gr.Button("Acquire Width and Height")          
