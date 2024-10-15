@@ -43,9 +43,10 @@ class AspectRatioScript(scripts.Script):
             with InputAccordion(False, label="Aspect Ratio Calculator", 
                 elem_id=css_acc
             ) as enabled:
-                arvalue = gr.Textbox(value="N/A", lines=1, label=""
+                arvalue = gr.Textbox(value="N/A", lines=1, label="",
                     info="Calculated aspect ratio from Width/Height", interactive=False, inputs=None
                 )
+                # Create a row.
                 with gr.Row(elem_id=css_row):
                     mybutton = gr.Button("Acquire Width and Height")          
                     with contextlib.suppress(AttributeError):
