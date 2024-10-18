@@ -49,7 +49,7 @@ class CalcAspectRatioScript(scripts.Script):
         with gr.Column(elem_id=css_col):
             # Create an accordioan.
             with InputAccordion(
-                False, label="Aspect Ratio Calculator", elem_id=css_acc
+                False, label="Calculate Aspect Ratio", elem_id=css_acc
             ) as enabled:
                 arvalue = gr.Textbox(value="N/A", lines=1, 
                     label="Calculated aspect ratio from Width/Height", interactive=False, inputs=None
